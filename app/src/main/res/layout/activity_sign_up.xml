@@ -1,10 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignUpActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@drawable/shape"
+    tools:context=".SignUpActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="25dp">
+
+        <!-- Logo -->
+        <ImageView
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/shape"
+            android:scaleType="fitCenter" />
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Account"
+            android:textStyle="bold"
+            android:textSize="32sp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp"/>
+
+        <!-- Subtitle -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Join Money Wellness Today"
+            android:textSize="16sp"
+            android:textColor="#CCFFFFFF"
+            android:layout_marginBottom="25dp"/>
+
+        <!-- Username -->
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_rounded"
+            android:drawableStart="@android:drawable/ic_menu_myplaces"
+            android:drawablePadding="10dp"
+            android:hint="Username"
+            android:inputType="textPersonName"
+            android:padding="15dp"
+            android:textColor="#0C2BD9"
+            android:textColorHint="#777777"/>
+
+        <!-- Phone -->
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edittext_rounded"
+            android:drawableStart="@android:drawable/ic_menu_call"
+            android:drawablePadding="10dp"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:padding="15dp"
+            android:textColor="#662626"
+            android:textColorHint="#777777"/>
+
+        <!-- Email -->
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edittext_rounded"
+            android:drawableStart="@android:drawable/ic_dialog_email"
+            android:drawablePadding="10dp"
+            android:hint="Email Address"
+            android:inputType="textEmailAddress"
+            android:padding="15dp"
+            android:textColor="#000000"
+            android:textColorHint="#777777"/>
+
+        <!-- Password -->
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edittext_rounded"
+            android:drawableStart="@android:drawable/ic_lock_lock"
+            android:drawablePadding="10dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:textColor="#000000"
+            android:textColorHint="#777777"/>
+
+        <!-- Sign Up Button -->
+        <Button
+            android:id="@+id/signupbtn"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/shape"
+            android:text="Create Account"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <!-- Sign In Link -->
+        <TextView
+            android:id="@+id/txtsignin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Already have an account? Sign In"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+ </ScrollView>
+</LinearLayout>

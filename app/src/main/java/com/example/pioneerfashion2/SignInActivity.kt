@@ -2,11 +2,15 @@ package com.example.pioneerfashion2
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.ButtonBarLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.loopj.android.http.RequestParams
 
 class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,5 +29,30 @@ class SignInActivity : AppCompatActivity() {
             val newpage= Intent(applicationContext, SignUpActivity::class.java)
             startActivity(newpage)
         }
+        //find the button and editby use of their id
+        val emailEditText =findViewById<EditText>(R.id.email)
+        val passwordEditText =findViewById<EditText>(R.id.password)
+        val signinBtn =findViewById<Button>(R.id.signinbtn)
+
+
+//        sdpecify what happend
+        signinBtn.setOnClickListener{
+//            set the API endpoint
+            val api= "https://kbenkamotho.alwaysdata.net/api/signin"
+
+            //create requestparams that act as envelope to hold your data
+            val  data = RequestParams()
+
+            //extract thje data from the edittext and add the same to the RequestParams
+            data.put("email",emailEditText.text.toString().trim())
+            data.put("password",passwordEditText.text.toString())
+
+            //import the API helper class
+            val helper= ApiHelper(applicationContext)
+
+            //access the method post_login in the helper class
+            helper.post_login(api,data)
+        }
+
     }
 }

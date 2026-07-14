@@ -53,8 +53,8 @@ class ApiHelper(var context: Context) {
                 headers: Array<out Header>?,
                 response: JSONObject?
             ) {
-                val message = response?.optString("message")
-                if (message == "Login success") {
+                val message = response?.optString("success")
+                if (message == "Welcome") {
                     val user = response.optJSONObject("user")
                     val username = user?.optString("username") ?: ""
                     val email = user?.optString("email") ?: ""
