@@ -7,7 +7,6 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.ButtonBarLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.loopj.android.http.RequestParams
@@ -22,37 +21,36 @@ class SignInActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        //find the text view by use of id
-        val signuptxt=findViewById<TextView>(R.id.txtsignup)
 
-        signuptxt.setOnClickListener {
-            val newpage= Intent(applicationContext, SignUpActivity::class.java)
+//        Find the text view by use of it's id
+        val signuptxt = findViewById<TextView>(R.id.txtsignup)
+
+        signuptxt.setOnClickListener{
+            val newpage = Intent(applicationContext, SignUpActivity::class.java)
             startActivity(newpage)
         }
-        //find the button and editby use of their id
-        val emailEditText =findViewById<EditText>(R.id.email)
-        val passwordEditText =findViewById<EditText>(R.id.password)
-        val signinBtn =findViewById<Button>(R.id.signinbtn)
+        //Find the button and the edit text by use of their ids
+        val emailEditText = findViewById<EditText>(R.id.email)
+        val  passwordEditText = findViewById<EditText>(R.id.password)
+        val signinBtn = findViewById<Button>(R.id.signinbtn)
 
+        //Specify what happens when the button is clicked
+        signinBtn.setOnClickListener {
+            //set the API endpoint
+            val api = "http://tikwet.alwaysdata.net/api/signin"
 
-//        sdpecify what happend
-        signinBtn.setOnClickListener{
-//            set the API endpoint
-            val api= "https://kbenkamotho.alwaysdata.net/api/signin"
+            //Create a request params that acts as an envelope to hold your data
+            val data = RequestParams()
 
-            //create requestparams that act as envelope to hold your data
-            val  data = RequestParams()
-
-            //extract thje data from the edittext and add the same to the RequestParams
+            //Extract the data from the edit text and add the same to the RequestParams
             data.put("email",emailEditText.text.toString().trim())
             data.put("password",passwordEditText.text.toString())
 
             //import the API helper class
-            val helper= ApiHelper(applicationContext)
+            val helper = ApiHelper(applicationContext)
 
             //access the method post_login in the helper class
-            helper.post_login(api,data)
+            helper.post_login(api, data)
         }
-
     }
 }

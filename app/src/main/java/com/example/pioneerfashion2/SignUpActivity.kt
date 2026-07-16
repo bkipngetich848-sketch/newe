@@ -22,39 +22,40 @@ class SignUpActivity : AppCompatActivity() {
             insets
         }
         //find the text view by use of id
-        val signuptxt=findViewById<TextView>(R.id.txtsignin)
+        val signuptxt = findViewById<TextView>(R.id.txtsignin)
 
         signuptxt.setOnClickListener {
-            val newpage= Intent(applicationContext, SignInActivity::class.java)
+            val newpage = Intent(applicationContext, SignInActivity::class.java)
             startActivity(newpage)
         }
         //find the button and editby use of their id
-        val emailEditText =findViewById<EditText>(R.id.email)
-        val phoneEditText =findViewById<EditText>(R.id.phone)
-        val usernameEditText =findViewById<EditText>(R.id.username)
-        val passwordEditText =findViewById<EditText>(R.id.password)
-        val signinBtn =findViewById<Button>(R.id.signupbtn)
+        val emailEditText = findViewById<EditText>(R.id.email)
+        val phoneEditText = findViewById<EditText>(R.id.phone)
+        val usernameEditText = findViewById<EditText>(R.id.username)
+        val passwordEditText = findViewById<EditText>(R.id.password)
+        val signinBtn = findViewById<Button>(R.id.signupbtn)
 
 
 //        sdpecify what happend
-        signinBtn.setOnClickListener{
+        signinBtn.setOnClickListener {
 //            set the API endpoint
-            val api= "https://tikwet.alwaysdata.net/api/signin"
+            val api = "https://tikwet.alwaysdata.net/api/signin"
 
             //create requestparams that act as envelope to hold your data
-            val  data = RequestParams()
+            val data = RequestParams()
 
             //extract thje data from the edittext and add the same to the RequestParams
-            data.put("email",emailEditText.text.toString().trim())
-            data.put("password",passwordEditText.text.toString())
-            data.put("username",usernameEditText.text.toString())
-            data.put("phone",phoneEditText.text.toString())
+            data.put("email", emailEditText.text.toString().trim())
+            data.put("password", passwordEditText.text.toString())
+            data.put("username", usernameEditText.text.toString())
+            data.put("phone", phoneEditText.text.toString())
 
             //import the API helper class
-            val helper= ApiHelper(applicationContext)
+            val helper = ApiHelper(applicationContext)
 
             //access the method post_login in the helper class
-            helper.post_login(api,data)
+            helper.post_login(api, data)
         }
 
     }
+}

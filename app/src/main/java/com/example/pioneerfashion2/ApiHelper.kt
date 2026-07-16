@@ -54,7 +54,7 @@ class ApiHelper(var context: Context) {
                 response: JSONObject?
             ) {
                 val message = response?.optString("success")
-                if (message == "Welcome") {
+                if (message == "welcome") {
                     val user = response.optJSONObject("user")
                     val username = user?.optString("username") ?: ""
                     val email = user?.optString("email") ?: ""
@@ -69,7 +69,7 @@ class ApiHelper(var context: Context) {
                     Toast.makeText(context, "Welcome $username", Toast.LENGTH_LONG).show()
 
                     // Redirect to Dashboard
-                    val intent = Intent(context, MainActivity::class.java)
+                    val intent = Intent(context, DashboardActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                     context.startActivity(intent)
                 } else {
@@ -88,35 +88,59 @@ class ApiHelper(var context: Context) {
         })
     }
 
-fun loadProducts(url: String, recyclerView: RecyclerView, progressBar: ProgressBar? = null) {
-    progressBar?.visibility = View.VISIBLE
-    val layoutManager = LinearLayoutManager(context)
-    recyclerView.layoutManager = layoutManager
-    val client = AsyncHttpClient(true, 80, 443)
 
-    client.get(context, url, null, "application/json", object : JsonHttpResponseHandler() {
-        override fun onSuccess(
-            statusCode: Int,
-            headers: Array<out Header>?,
-            response: JSONArray
-        ) {
-            progressBar?.visibility = View.GONE
-//            val productList = ProductAdapter.fromJsonArray(response)
-//            val adapter = ProductAdapter(productList)
-//            recyclerView.adapter = adapter
-        }
+    fun loadProducts(url: String, recyclerView: RecyclerView, progressBar: ProgressBar? = null) {
+        progressBar?.visibility = View.VISIBLE
+        val layoutManager = LinearLayoutManager(context)
+        recyclerView.layoutManager = layoutManager
+        val client = AsyncHttpClient(true, 80, 443)
 
-        override fun onFailure(
-            statusCode: Int,
-            headers: Array<out Header>?,
-            responseString: String?,
-            throwable: Throwable?
-        ) {
-            progressBar?.visibility = View.GONE
-            Toast.makeText(context, "Failed to load products", Toast.LENGTH_SHORT).show()
-        }
-    })
-}
+        // Change Content-Type to "application/json" if required by your API backend
+        client.get(context, url, null, "application/json", object : JsonHttpResponseHandler() {
+
+            // 1. Change the response parameter type from JSONArray to JSONObject
+            override fun onSuccess(
+                statusCode: Int,
+                headers: Array<out Header>?,
+                response: JSONObject?
+            ) {
+                progressBar?.visibility = View.GONE
+
+                // 2. Extract the "products" array safely
+                val jsonArray = response?.optJSONArray("products")
+
+                if (jsonArray != null) {
+                    // 3. Pass the extracted JSONArray to your adapter parser
+                    val productList = ProductAdapter.fromJsonArray(jsonArray)
+                    val adapter = ProductAdapter(productList)
+                    recyclerView.adapter = adapter
+                } else {
+                    Toast.makeText(context, "No products found", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<out Header>?,
+                responseString: String?,
+                throwable: Throwable?
+            ) {
+                progressBar?.visibility = View.GONE
+                Toast.makeText(context, "Failed to load products: ${throwable?.message}", Toast.LENGTH_SHORT).show()
+            }
+
+            // 4. Overriding this variation ensures you capture string-based error responses
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<out Header>?,
+                throwable: Throwable?,
+                errorResponse: JSONObject?
+            ) {
+                progressBar?.visibility = View.GONE
+                Toast.makeText(context, "Server Error", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
 
     //GET
     fun get(api: String, callBack: CallBack) {

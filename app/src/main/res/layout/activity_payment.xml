@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PaymentActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="M-pesa Pay."
+        android:textSize="28sp"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:background="@drawable/shape2"
+        android:padding="20dp"
+        android:textColor="#E9E9DD"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="20dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="20dp"
+        android:padding="10dp"
+        android:backgroundTint="#F30D6125"
+        android:layout_margin="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtProductName"
+                android:text="Product Name"
+                android:textSize="25dp"
+                android:textColor="#0119A9"
+                android:textStyle="italic"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/txtProductCost"
+                android:text="Ksh 500"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="#465"
+                android:layout_marginLeft="7dp"/>
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/phone"
+                android:hint="Enter Your Phone Number"
+                android:textColorHint="#5A785A"
+                android:background="@drawable/edittext_rounded"
+                android:textColor="#F2CE1A"
+                android:backgroundTint="#243149"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:inputType="number"
+                android:padding="20dp"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/pay"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="50dp"
+                android:text="Pay Now"
+                android:textSize="25sp"
+                android:backgroundTint="#254"/>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
