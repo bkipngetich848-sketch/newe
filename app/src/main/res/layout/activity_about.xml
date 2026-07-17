@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="About Daily Yoghurt"
+        android:textSize="35sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:background="@drawable/edittext_rounded"
+        android:textColor="#08F844"
+        android:padding="15dp"/>
+
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="match_parent"
+        android:layout_height="495dp"
+        android:layout_marginTop="20dp"
+        android:text="Welcome to my store where all fashion clothes and quality clothes are found,, we are gald for you coming and beingg intrested in our products ,our arm is to make you happpy and offer you the best in this indusry and we offfer good quality cloths that is fashional and long lasting to you family and you, our mission is to be a global competitor in this field of fashion .We look forwand in working with you even in the near future and having you back to our store, you presence coming to us and shopping with us will have a great impact in our company and also our fellow worker and collaporator in this company. We thank you and we appreciate you effort and time"
+        android:textColor="#451"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/speakButton"
+        android:layout_width="139dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
+        android:width="24dp"
+        android:height="50dp"
+        android:maxWidth="50dp"
+        android:text="Listen"
+        android:textSize="25sp" />
+</LinearLayout>

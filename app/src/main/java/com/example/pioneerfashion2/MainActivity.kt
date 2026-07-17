@@ -22,6 +22,12 @@ class MainActivity : AppCompatActivity() {
         //find the buttons by use of their Id's
         val signupbtn = findViewById<Button>(R.id.signupbtn)
         val signinbtn = findViewById<Button>(R.id.signinbtn)
+        val aboutbtn = findViewById<Button>(R.id.aboutbtn)
+
+        aboutbtn.setOnClickListener {
+            val newpage = Intent(applicationContext, AboutActivity::class.java)
+            startActivity(newpage)
+        }//end intent
 
         //have the explicit intent
         signinbtn.setOnClickListener {
